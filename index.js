@@ -9,10 +9,13 @@ const port = process.env.PORT;
 
 const database = require('./database');
 
+// API Routes impport
+const userRoute = require('./routes/User');
 
 // middleware setup
 // Cross Origin Resource Sharing Setup
 app.use(cors());
+app.use("/api/user", userRoute);
 
 // Desc: default route
 // Method: GET
@@ -23,6 +26,7 @@ app.get(
   (req, res) => {
     return res.status(200).json({
       status: true,
+      code: 200,
       message: "Default API Route."
     });
   }
